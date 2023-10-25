@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="margin_8dp">8dp</dimen>
+    <dimen name="margin_16dp">16dp</dimen>
+    <dimen name="margin_24dp">24dp</dimen>
+
+    <dimen name="margin_1dp">1dp</dimen>
+
+    <!--
+    12sp Small word prompt
+14sp (Desktop 13sp) Text in the body or button
+16sp (Desktop 15sp) subtitle
+20sp Appbar text
+24sp big title
+34sp/45sp/56sp/112sp oversized text -->
+    <dimen name="text_size_14sp">14sp</dimen>
+
+
+</resources>

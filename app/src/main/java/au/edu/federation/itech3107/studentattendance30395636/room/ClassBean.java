@@ -3,7 +3,7 @@ package au.edu.federation.itech3107.studentattendance30395636.room;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-//班级表
+//Class chart
 @Entity
 public class ClassBean {
 

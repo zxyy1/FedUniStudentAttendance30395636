@@ -55,7 +55,7 @@ public class KeChengActivity extends AppCompatActivity implements View.OnClickLi
 
     private TextView mTvWeekCount;
     private int zg;
-    private int yue;
+    private String yue;
     private ShowDetailDialog mDialog;
     private CourseView kecheng;
     private LinearLayout mLayoutWeekGroup;
@@ -79,6 +79,8 @@ public class KeChengActivity extends AppCompatActivity implements View.OnClickLi
         mLayoutNodeGroup = findViewById(R.id.layout_node_group);
         mLayoutCourse = findViewById(R.id.layout_course);
         mIntentId = getIntent().getIntExtra("id", 0);
+        yue = getIntent().getStringExtra("date");
+
         ScreenUtils.init(this);
         Preferences.init(this);
         initToolbar();
@@ -329,7 +331,6 @@ public class KeChengActivity extends AppCompatActivity implements View.OnClickLi
     @SuppressLint("SetTextI18n")
     public void updateCoursePreference() {
         updateCurrentWeek();
-        yue = TimeUtils.getNowMonth();
         mMMonthTextView.setText(yue + "\nmonth");
 
         //get id

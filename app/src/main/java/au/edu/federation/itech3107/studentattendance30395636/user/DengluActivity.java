@@ -1,7 +1,9 @@
 package au.edu.federation.itech3107.studentattendance30395636.user;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;

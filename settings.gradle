@@ -1,5 +1,9 @@
 pluginManagement {
     repositories {
+//        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+//        maven { url 'https://maven.aliyun.com/repository/central' }
+//        maven { url 'https://maven.aliyun.com/repository/google' }
+//        maven { url 'https://maven.aliyun.com/repository/public' }
         google()
         mavenCentral()
         gradlePluginPortal()
@@ -8,13 +12,17 @@ pluginManagement {
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
+//        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+//        maven { url 'https://maven.aliyun.com/repository/central' }
+//        maven { url 'https://maven.aliyun.com/repository/google' }
+//        maven { url 'https://maven.aliyun.com/repository/public' }
         google()
         jcenter() {
             url 'https://maven.aliyun.com/repository/jcenter'
         }
         mavenCentral()
-        maven { url 'https://maven.aliyun.com/nexus/content/groups/public'}
-        maven { url 'https://developer.huawei.com/repo/'}
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public' }
+        maven { url 'https://developer.huawei.com/repo/' }
         maven { url 'https://jitpack.io' }
     }
 }

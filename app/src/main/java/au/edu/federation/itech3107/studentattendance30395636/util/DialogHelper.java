@@ -30,27 +30,8 @@ import au.edu.federation.itech3107.studentattendance30395636.R;
 
 public class DialogHelper {
 
-    private ProgressDialog progressDialog;
     //Easy access to the DialogHelper object outside the callback function to close the mCustomDialog
     private AlertDialog mCustomDialog;
-
-    /**
-     * You cannot close the waiting dialog if you are not sure<br>
-     */
-    public void showProgressDialog(Context context, String title, String msg, boolean canceable) {
-        hideCustomDialog();
-
-        progressDialog = ProgressDialog.show(context, title, msg, true, canceable);
-        progressDialog.setIndeterminate(true);
-        progressDialog.setCancelable(false);
-        progressDialog.show();
-    }
-
-    public void hideProgressDialog() {
-        if (progressDialog != null && progressDialog.isShowing()) {
-            progressDialog.dismiss();
-        }
-    }
 
     /**
      * General dialog box
@@ -77,25 +58,6 @@ public class DialogHelper {
                 .show();
     }
 
-    /**
-     * List dialog box
-     */
-    public void showListDialog(@NonNull Activity activity, String title,
-                               @NonNull String[] items, @NonNull final DialogListener listener) {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-
-        if (!TextUtils.isEmpty(title)) {
-            builder.setTitle(title);
-        }
-        builder.setItems(items, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                listener.onItemClick(dialog, which);
-            }
-        }).show();
-    }
-
 
     /**
      * Customize the pop-up
@@ -112,11 +74,11 @@ public class DialogHelper {
 
         if (listener != null) {
             builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    listener.onPositive(dialog, which);
-                }
-            })
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            listener.onPositive(dialog, which);
+                        }
+                    })
                     .setNegativeButton("取消", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -145,61 +107,6 @@ public class DialogHelper {
         }
 
         mCustomDialog.show();
-    }
-
-    public void showCustomDialog(@NonNull Context context, View dialogView, String title, int dialogWidth,
-                                 final DialogListener listener) {
-        showCustomDialog(context, dialogView, title, listener);
-        Window window = mCustomDialog.getWindow();
-        if (window != null) {
-            window.setLayout(dialogWidth, LinearLayout.LayoutParams.WRAP_CONTENT);
-        }
-    }
-
-    /**
-     * Bottom popup
-     */
-    public Dialog buildBottomDialog(Activity activity, View layoutView) {
-        Dialog bottomDialog = new Dialog(activity, R.style.BottomDialog);
-        bottomDialog.setContentView(layoutView);
-        ViewGroup.LayoutParams layoutParams = layoutView.getLayoutParams();
-        layoutParams.width = activity.getResources().getDisplayMetrics().widthPixels;
-        layoutView.setLayoutParams(layoutParams);
-        bottomDialog.getWindow().setGravity(Gravity.BOTTOM);
-        bottomDialog.getWindow().setWindowAnimations(R.style.BottomDialog_Animation);
-
-        return bottomDialog;
-    }
-
-    /**
-     * The bottom list popup
-     */
-    public Dialog buildBottomListDialog(Activity activity, String[] items, final DialogListener listener) {
-        ListView listView = new ListView(activity.getApplicationContext());
-        listView.setDivider(new ColorDrawable(activity.getResources().getColor(R.color.color_divider)));
-        listView.setDividerHeight(1);
-        listView.setBackgroundColor(activity.getResources().getColor(R.color.white_f1));
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(activity, R.layout.adapter_bottom_dialog_sytle, items);
-        listView.setAdapter(adapter);
-
-
-        final Dialog bottomDialog = new Dialog(activity, R.style.BottomDialog);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                listener.onItemClick(bottomDialog, position);
-            }
-        });
-
-        bottomDialog.setContentView(listView);
-        ViewGroup.LayoutParams layoutParams = listView.getLayoutParams();
-        layoutParams.width = activity.getResources().getDisplayMetrics().widthPixels;
-        listView.setLayoutParams(layoutParams);
-        bottomDialog.getWindow().setGravity(Gravity.BOTTOM);
-        bottomDialog.getWindow().setWindowAnimations(R.style.BottomDialog_Animation);
-
-        return bottomDialog;
     }
 
 
